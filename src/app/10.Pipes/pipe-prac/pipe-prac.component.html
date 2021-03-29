@@ -1,0 +1,67 @@
+<!--prints the string in lower case-->
+<h2> LOWER CASE PIPE - {{ myname | lowercase }}</h2>
+<!--prints the string in upper case-->
+<h2>  UPPER CASE PIPE - {{ myname | uppercase }}</h2>
+<!--prints the string in title case-->
+<h2>  TITLE CASE PIPE - {{ message | titlecase }}</h2>
+<!--prints the slice of string from 3rd location-->
+<h2> SLICE  PIPE - {{ myname | slice:3 }}</h2>
+<!--prints the slice of string from 3rd location to 5th location excludes the 6th location-->
+<h2> SLICE PIPE - {{ myname | slice:3:6 }}</h2>
+<!--prints the string in JSON format-->
+<h2> JSON PIPE - {{ myinfo | json }}</h2>
+
+
+<!--prints the number with single digit before decimal point and checks for minimal-maximal condition-->
+<h2> NUMBER PIPE - {{ 5.678 | number:'1.2-3' }}</h2>
+<!--when condition fails it appends zero to meet the condition-->
+<h2> NUMBER PIPE - {{ 5.678 | number:'3.4-5' }}</h2>
+<!--when both of the conditions are met, if displays according to second(max) conditon-->
+<h2> NUMBER PIPE - {{ 5.678 | number:'3.1-2' }}</h2>
+<!--prints the number as percentage representation-->
+<h2> PERCENTAGE PIPE - {{ 0.50 | percent }}</h2>
+
+
+<!--By default it takes $ as currency-->
+<h2> DEFAULT CURRENCY PIPE - {{ 0.50 | currency }}</h2>
+<!--By passing country currency code as argument, the current will be displayed according to it-->
+<h2>CURRENCY PIPE WITH CODE AS ARGUMENT -  {{ 0.50 | currency:'INR' }}</h2>
+<h2> CURRENCY PIPE WITH CODE AS ARGUMENT - {{ 0.50 | currency:'GBP' }}</h2>
+<!--Prints cuurency with code in view-->
+<h2>CURRENCY PIPE WITH CODE - {{ 0.50 | currency:'GBP':'code' }}</h2>
+<h2>CURRENCY PIPE WITH SYMBOL - {{ 0.50 | currency:'GBP':'symbol' }}</h2>
+
+<!--displays day,time with full format-->
+<h2> NORMAL DATE PIPE -  {{ date | date }}</h2>
+<h2>   {{ date | date:"dd-MM-yyyy" }}</h2>
+<h2>   {{ date | date:"dd-MMM-yyyy" }}</h2><!--displays date with month in words-->
+<h2>   {{ date | date:"dd/MM/yyyy" }}</h2>
+
+<!--displays date,time with short format-->
+<h2>  SHORT PIPE -{{ date | date:'short' }}</h2>
+<!--displays just the date-->
+<h2> SHORT DATE PIPE{{ date | date:'shortDate' }}</h2>
+<!--displays just the time-->
+<h2>SHORT TIME PIPE{{ date | date:'shortTime' }}</h2>
+
+<h2>LONG PIPE - {{ date | date:'long' }}</h2>
+<h2>LONG DATE PIPE - {{ date | date:'longDate' }}</h2>
+<h2> LONG TIME PIPE - {{ date | date:'longTime' }}</h2>
+
+<h2> MEDIUM PIPE - {{ date | date:'medium' }}</h2>
+<h2> MEDIUM DATE PIPE - {{ date | date:'mediumDate' }}</h2>
+<h2> MEDIUM TIME PIPE - {{ date | date:'mediumTime' }}</h2>
+
+
+<h2>KEY VALUE PAIR PIPE - {{myinfo | keyvalue | json}}</h2>
+
+<h2>CUSTOM PIPE - {{myVal | custom}}</h2>
+
+
+
+
+
+
+
+
+

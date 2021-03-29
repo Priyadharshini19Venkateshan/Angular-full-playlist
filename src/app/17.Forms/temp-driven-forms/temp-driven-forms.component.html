@@ -1,0 +1,33 @@
+<form #loginForm="ngForm" (submit)="submitForm(loginForm)">
+  
+   User Name: <input type="text" [(ngModel)]="username" name="username" required minlength="5" maxlength="15"><br> 
+  <!--   <mat-form-field appearance="standard" >
+        <mat-label>User Name</mat-label>
+        <input matInput [(ngModel)]="username" name="username" placeholder="please enter">
+        <mat-hint>dont exceed 15 char </mat-hint>
+    </mat-form-field> -->
+    
+   Gender: <select [(ngModel)]="gender" name="gender" required >
+      <option value="male" >Male</option>
+      <option value="female" >Female</option>
+      <option value="others" >Others</option>
+     </select><br>
+
+   Graduate:  <input type="radio" [(ngModel)]="graduate" name="graduate" value="yes">
+   <label>Yes</label>
+   <input type="radio" [(ngModel)]="graduate" name="graduate" value="no">
+   <label>No</label>
+   <br>
+
+  
+     
+    Description: <textarea [(ngModel)]="description" name="description"></textarea><br>
+    
+     <input type="checkbox" [(ngModel)]="terms" name="terms" required> I am hereby, understood the terms and conditions.<br>
+
+
+     <button type="submit" [disabled]="!loginForm.valid"> Submit </button> &nbsp; 
+     <button (click)="resetForm(loginForm)"> Reset </button> &nbsp; 
+     <button (click)="Setvalues(loginForm)"> Set Value </button>
+
+</form>

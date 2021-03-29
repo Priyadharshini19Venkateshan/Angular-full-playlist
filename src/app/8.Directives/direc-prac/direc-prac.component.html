@@ -1,0 +1,49 @@
+ <!-- working if with inline statements-->
+<h1 *ngIf="activate; else elsseblock">The name is displayed</h1>
+<ng-template #elsseblock>
+    <h1>The name is hidden</h1>
+</ng-template>
+
+ <!-- working if with different block of statements-->
+<div *ngIf="enabled; then ifblock; else elseblock ">
+</div>
+<ng-template #ifblock>
+    <h1>If block is enabled</h1>
+</ng-template>
+
+<ng-template #elseblock>
+    <h1> Else block is enabled</h1>
+</ng-template>
+
+ <!-- working switch with different block of statements-->
+<div [ngSwitch]="colorPicked">
+    <div *ngSwitchCase=" 'red' "> you picked a red color</div>
+    <div *ngSwitchCase=" 'blue' "> you picked a blue color</div>
+    <div *ngSwitchCase=" 'green' ">you picked a green color</div>
+    <div *ngSwitchDefault> pick a color</div>
+</div><br><br>  
+
+<!-- working of for loop-->
+<div *ngFor="let num of numerals">
+ {{num}}
+</div><br>
+
+<div *ngFor="let num of numerals ; index as i">
+    {{i}}th element is {{num}}
+</div><br>
+
+<div *ngFor="let num of numerals ; first as f">
+    {{f}} {{num}}
+</div><br>
+
+<div *ngFor="let num of numerals ; last as l">
+    {{l}} {{num}}
+</div><br>
+
+<div *ngFor="let num of numerals ; odd as o">
+    {{o}} {{num}}
+</div><br>
+
+<div *ngFor="let num of numerals ; even as e">
+    {{e}} {{num}}
+</div>

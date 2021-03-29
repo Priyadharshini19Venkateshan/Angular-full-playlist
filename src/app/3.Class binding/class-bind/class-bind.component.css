@@ -1,0 +1,17 @@
+.myclass{
+    color:blueviolet;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.colorclass{
+    color:blueviolet;
+}
+
+.fontclass{
+    font-size: 30px;
+}
+
+.familyclass{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

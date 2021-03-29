@@ -1,0 +1,29 @@
+<p> {{myText}} </p>
+
+<button (click)="changeText()"> CLICK ME!!</button>
+<br><br>
+
+<button (click)="changeEvent($event)"> CLICK ME FOR EVENT!!</button>
+<br><br>
+
+<input (keyup)="onkeyPressed($event)">
+<p>{{myInputText}}</p>
+<br><br>
+
+<input (keydown)="onkeyPresseddown($event)">
+<p>{{myInputText1}}</p>
+<br><br>
+
+
+<div (mousemove)=incrementByOne() [ngClass]="mystyle">
+    {{count}}
+</div> 
+<br><br>
+
+<!--<select (change)="changeColor($event.target.value)">
+    <option value="red">RED</option>
+    <option value="green">GREEN</option>
+    <option value="yellow">YELLOW</option>
+    <option value="white">WHITE</option>
+</select> 
+<h3>The selected color is {{mycolor}}</h3> -->

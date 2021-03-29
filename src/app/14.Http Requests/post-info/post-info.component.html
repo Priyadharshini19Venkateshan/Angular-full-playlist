@@ -1,0 +1,30 @@
+<h1>INFORMATION ON POSTS</h1>
+<table>
+    <tr>
+        <th> ID</th>
+        <th> TITLE</th>
+        <th> BODY </th>
+    </tr>
+    
+    <tbody>
+  <tr *ngFor="let post_info of ( post_info |async)">
+ <td>  {{post_info.id}}</td>
+ <td>  {{post_info.title}}</td>
+ <td>   {{post_info.body}}</td>
+</tbody>
+</table> 
+
+<br>
+<h2>CREATE NEW POST</h2>
+<div *ngIf="created"> Post Created Successfully</div>
+<form #postForm="ngForm" (submit)="createNew(postForm)">
+ USER ID:   <input type="text" class="form-control" name="userid" required ngModel /><br><br>
+  ID:  <input type="text" class="form-control" name="id" required ngModel /> <br><br>
+ TITLE:   <input type="text" class="form-control" name="title" required ngModel /> <br><br>
+ BODY:   <input type="text" class="form-control" name="body" required ngModel /><br><br>
+    <button class="form-control" [disabled]="!postForm.valid">ADD NEW </button>
+</form>
+<br><br>
+<button (click)="updateData(3)">Update</button><br><br>
+<button (click)="deleteData(6)">Delete</button><br><br>
+<button (click)="getbyid()">Read Data By Id</button>

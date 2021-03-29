@@ -1,0 +1,23 @@
+<div [style.color]=" 'red' ">
+    This is style binding
+</div>
+
+
+<div [style.color]=" 'blue' " 
+     [style.text-align]=" 'center' ">
+    This is Multiple style 
+</div>
+
+<div [style.color]=" ifactivate ? 'green' : 'purple' ">
+    This is Conditional style 
+</div>
+
+<div [style.font-size.px]=" ifactivate ? '50' : '100' "
+      [style.color]=" 'violet' ">
+    This is Conditional style 
+</div>
+
+<div [ngStyle]="myStyle">
+    This is Object style binding
+</div>
+

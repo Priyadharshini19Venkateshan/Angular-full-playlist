@@ -1,0 +1,14 @@
+<p>This is interpolation String output - {{ mystring }}</p>
+<p>This is interpolation Number output - {{ mynumber }}</p>
+<p>This is interpolation of Arithmetic  {{ mynumber }} + 5 - {{ mynumber + 5}}</p>
+
+<!--Way1 of displaying image-->
+<p>This is interpolation Image output - <img src= "{{myimage}}"> </p>
+
+<!--Way2 of displaying image-->
+<p>This is interpolation Image output - <img [src]= "myimage"> </p>
+
+<!--Way3 of displaying image-->
+<p>This is interpolation Image output - <img bind-src= "myimage"> </p>
+
+<p>This is interpolation JSON output - {{ myjson.name}}  {{ myjson.workspace}}  </p>
