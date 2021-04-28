@@ -1,0 +1,65 @@
+<form [formGroup]="loginForm">
+    
+    <mat-form-field appearance="legacy">
+        <mat-label>User name</mat-label>
+        <input matInput  formControlName="username"  placeholder="">
+        <mat-hint></mat-hint>
+      </mat-form-field>
+      <div class="msgs" *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched"> Username is required</div>
+      <div class="msgs" *ngIf="loginForm.get('username').hasError('minlength') && loginForm.get('username').touched"> Username should be minimun 5 chars</div>
+      <div class="msgs" *ngIf="loginForm.get('username').hasError('maxlength') && loginForm.get('username').touched"> Username should be maximum 20 chars</div>
+      <br><br>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput   formControlName="password"  placeholder="Please enter">
+        <mat-hint>combination of char,spcl char,num</mat-hint>
+      </mat-form-field>
+      <div class="msgs" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"> Password is required</div>
+      <br><br>
+
+
+      <!-- Be carefull on this part -->
+
+      <!-- FORM ARAAY WITH FORM CONTROLS
+      <div formArrayName="info">
+        <mat-form-field appearance="legacy">
+          <mat-label>Additional Information</mat-label>
+          <div *ngFor="let controls of loginForm.controls.info['controls'] ; 
+                         let i=index"> 
+          <input matInput   [formControlName]="i"  placeholder="">
+        </div>
+        </mat-form-field>
+      </div> -->
+
+
+      <!-- FORM ARRAY WITH FORM GROUP -->
+    <div formArrayName="info">
+      <mat-label> ADDITIONAL INFORMATION</mat-label>
+       
+      <div *ngFor="let controls of loginForm.controls.info['controls'] ; 
+        let i=index;"   [formGroupName]="i" > 
+       
+        <mat-form-field appearance="legacy">
+        <mat-label> Name</mat-label>
+       <input matInput   formControlName="name"  placeholder="">
+      </mat-form-field> &nbsp; &nbsp;
+
+      <mat-form-field appearance="legacy">
+       <mat-label> age</mat-label>
+       <input matInput   formControlName="age" (blur)="assignMaturity(i)" placeholder="">
+      </mat-form-field> &nbsp; &nbsp;
+
+       <mat-form-field appearance="legacy">
+       <mat-label> Maturity</mat-label>
+       <input matInput   formControlName="maturity"  placeholder="">
+      </mat-form-field> &nbsp; &nbsp;
+
+      <button mat-flat-button  color="primary" (click)="removeinfo(i)">Remove Info</button>
+    </div>
+    </div>
+  
+      <button mat-flat-button  color="primary" (click)="submitForm()" [disabled]="!loginForm.valid">Submit</button> &nbsp; &nbsp;
+      <button mat-flat-button  color="primary" (click)="addinfo()">Add Info</button>
+
+</form>
