@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { from } from 'rxjs';
+import { PasswordValidation } from '../shared/password-validation';
+import { forbiddenNameValidator } from '../shared/username-validator';
+import {  LoginService  } from '../login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -11,8 +16,7 @@ export class ReactiveFormsComponent implements OnInit {
 loginForm: FormGroup;
 
 
-
-  constructor( private formbuilder: FormBuilder) { }
+  constructor( private formbuilder: FormBuilder, private login: LoginService) { }
 
   ngOnInit() {
 
@@ -26,9 +30,13 @@ loginForm: FormGroup;
     //Using Formbuilder
     this.loginForm = this.formbuilder.group({
         'username': new FormControl('',[ Validators.required , Validators.minLength(5), 
-          Validators.maxLength(20) 
+          Validators.maxLength(20), forbiddenNameValidator(/admin/)
         ]), 
+        'email': new FormControl(''),
+        'subscribe': new FormControl(false),
         'password': new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+        'confirmPassword': new FormControl('',[Validators.required]),
+
        
         /* FORM ARAAY WITH FORM CONTROLS
         'info': new FormArray([
@@ -44,9 +52,7 @@ loginForm: FormGroup;
             'maturity': new FormControl(''),
           })
         ])
-
-
-    })
+    },{validator:PasswordValidation});
 
    
     // way1 to set value for forms
@@ -84,22 +90,43 @@ loginForm: FormGroup;
 
 
 
- //simple way1  for FORMARRAY
+ /*simple way1  for FORMARRAY
  let info = new FormArray([
    new FormControl('priya'),
    new FormControl('dharshini')
  ])
 console.log(info);
-console.log(info.value);
-  }
+console.log(info.value); */
+
+
+
+
+//conditional validation for email with checkbox
+this.loginForm.get('subscribe').valueChanges.subscribe( 
+  (checkedValue)=> {
+    const email = this.loginForm.get('email');
+    if(checkedValue)
+    email.setValidators(Validators.required);
+    else
+    email.clearValidators();
+
+    email.updateValueAndValidity();
+  } ); 
+
+
+  } 
 
 
 
 
   submitForm(){
 
+    this.login.postData(this.loginForm.value). subscribe(
+      response => console.log('Logged In Successfully!!', response)
+    );
+
   //receives all the form values on one go
-   console.log(this.loginForm.value);
+  // console.log(this.loginForm.value);
     
  //receives only specific/certain form value
   //  console.log(this.loginForm.get('username').value);
@@ -112,7 +139,7 @@ console.log(info.value);
 
 
 
-//checking state information of forms
+/*checking state information of forms
   console.log("ng-Valid = " + this.loginForm.valid);
   console.log("ng-Invalid = " + this.loginForm.invalid);
   console.log("ng-Touched = " + this.loginForm.touched);
@@ -120,7 +147,14 @@ console.log(info.value);
   console.log("ng-Pending = " + this.loginForm.pending);
   console.log("ng-Pristine = " + this.loginForm.pristine);
   console.log("ng-Dirty = " + this.loginForm.dirty);
-  }
+   */
+   }
+
+ 
+
+
+
+
 
 
 get info(): FormArray{

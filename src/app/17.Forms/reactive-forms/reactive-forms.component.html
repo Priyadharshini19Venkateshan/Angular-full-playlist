@@ -8,14 +8,39 @@
       <div class="msgs" *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched"> Username is required</div>
       <div class="msgs" *ngIf="loginForm.get('username').hasError('minlength') && loginForm.get('username').touched"> Username should be minimun 5 chars</div>
       <div class="msgs" *ngIf="loginForm.get('username').hasError('maxlength') && loginForm.get('username').touched"> Username should be maximum 20 chars</div>
+      <div class="msgs" *ngIf="loginForm.get('username').errors?.forbiddenName"> {{loginForm.get('username').errors?.forbiddenName.value}} Username not allowed</div>
+
       <br><br>
+
+
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input matInput  formControlName="email"  placeholder="">
+        <mat-hint></mat-hint>
+      </mat-form-field>
+      <div class="msgs" *ngIf="loginForm.get('email').invalid && loginForm.get('email').untouched"> Email is Required</div>
+       <br><br>
+
+      <mat-checkbox class="example-margin"  color="primary" formControlName="subscribe">
+        Send me promotional offers
+      </mat-checkbox><br><br>
 
       <mat-form-field appearance="legacy">
         <mat-label>Password</mat-label>
         <input type="password" matInput   formControlName="password"  placeholder="Please enter">
-        <mat-hint>combination of char,spcl char,num</mat-hint>
+        <mat-hint></mat-hint>
       </mat-form-field>
       <div class="msgs" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"> Password is required</div>
+      <br><br>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput   formControlName="confirmPassword"  placeholder="Please enter">
+        <mat-hint></mat-hint>
+      </mat-form-field>
+      <div class="msgs" *ngIf="loginForm.get('confirmPassword').hasError('required') && loginForm.get('confirmPassword').touched"> Confirm Password is required</div>
+      <div class="msgs" *ngIf="loginForm.errors?.misMatch">Passwords do not matched</div>
       <br><br>
 
 
@@ -60,6 +85,7 @@
     </div>
   
       <button mat-flat-button  color="primary" (click)="submitForm()" [disabled]="!loginForm.valid">Submit</button> &nbsp; &nbsp;
-      <button mat-flat-button  color="primary" (click)="addinfo()">Add Info</button>
+      <button mat-flat-button  color="primary" (click)="addinfo()">Add Info</button>  &nbsp; &nbsp;
+    </form>
 
-</form>
+   

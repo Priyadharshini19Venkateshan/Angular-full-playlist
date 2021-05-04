@@ -43,6 +43,8 @@ import { ReactiveFormsComponent } from './17.Forms/reactive-forms/reactive-forms
 import {MatFormFieldModule} from '@angular/material/form-field';
 import  {MatInputModule} from '@angular/material/input';
 import  {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -90,7 +92,8 @@ import  {MatButtonModule} from '@angular/material/button';
 
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
    
   ],
   providers: [EmployeeService],
